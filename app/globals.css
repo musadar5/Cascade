@@ -1,0 +1,32 @@
+@import url("https://fonts.googleapis.com/css2?family=Monoton&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gelasio:ital,wght@0,400..700;1,400..700&display=swap'); 
+/* for navbar 2 */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.monoton-regular {
+  font-family: "Monoton", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.gelasio-forNavbar2Logo {
+  font-family: "Gelasio", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.space-mono-regular {
+  font-family: "Space Mono", monospace;
+  font-weight: 400;
+  font-style: normal;
+}
+
+a {
+  cursor: pointer; /* Change the cursor to a pointer on hover */
+  text-decoration: none; /* Optional: Remove underline from links */
+}

@@ -1,0 +1,22 @@
+.ScrollComponent {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* Chrome, Safari, Edge */
+.ScrollComponent::-webkit-scrollbar {
+  width: 6px; /* Width of the scrollbar 12px */
+}
+
+.ScrollComponent::-webkit-scrollbar-thumb {
+  background-color: #2c2222; /* Color of the scrollbar thumb #888*/
+  border-radius: 8px; /* Rounded corners for the scrollbar thumb 10px */
+}
+
+.ScrollComponent::-webkit-scrollbar-thumb:hover {
+  background-color: #161616; /* Change color on hover #555 */
+}
+
+.ScrollComponent::-webkit-scrollbar-track {
+  background-color: #969393; /* Background of the scrollbar track #f1f1f1*/
+}
