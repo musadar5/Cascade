@@ -27,9 +27,9 @@ const WebsiteNavbar1 = ({ where }) => {
     <div
       className={`${
         isScrolled ? "bg-white" : null
-      }  w-full h-16  flex justify-between ${
-        where ? "fixed" : "sticky top-16"
-      }  items-center md:px-12 px-5 transition-colors duration-500 ease-in-out`}
+      }  w-full h-20  flex justify-between ${
+        where === true ? "fixed" : "sticky top-16"
+      }  items-center md:px-16 px-5 transition-colors duration-500 ease-in-out`}
     >
       <div className=" w-14 h-14  flex justify-center items-center  ">
         <img
@@ -100,3 +100,7 @@ const WebsiteNavbar1 = ({ where }) => {
 };
 
 export default WebsiteNavbar1;
+
+{
+  /* <div className={`storename  ${isScrolled?"":" mt-56 "} gelasio-forNavbar2Logo `} style={{fontSize:`${isScrolled?"36px":"calc(150px)"}`}}>GUCCI</div> */
+}

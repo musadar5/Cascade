@@ -1,5 +1,6 @@
 import SessionWrapper from "./components/SessionWrapper";
 import "@/app/globals.css";
+import Script from "next/script";
 
 
 
@@ -12,6 +13,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <Script src="https://cdn.lordicon.com/lordicon.js"></Script>
 
       <body >
         <SessionWrapper>

@@ -87,7 +87,9 @@ const Page = () => {
           </div>
 
           <div className="bg-blue-400 w-full h-20 flex justify-center items-center gap-4 md:gap-14 px-3">
-            <div className="font-semibold text-sm bg-white">Choose the Navbar of your choice!</div>
+            <div className="font-semibold text-sm bg-white">
+              Choose the Navbar of your choice!
+            </div>
             <div className="radiobuttons flex flex-col justify-center items-center gap-1">
               <div className="navbar1 flex items-center gap-1 ">
                 <input
@@ -132,7 +134,8 @@ const Page = () => {
               <WebsiteHeader headermsg={headermsg} headercolor={headercolor} />
             )}
             {/* {NavbarId === "1" ? <WebsiteNavbar1 /> : null}{" "} */}
-            {NavbarId === "1" ? <WebsiteCoverandNavbar /> : null}{" "}
+            {/* {NavbarId === "2" ? <WebsiteCoverandNavbar navbar={NavbarId} /> : null}{" "} */}
+            <WebsiteCoverandNavbar navbar={NavbarId} where={false} />
           </div>
         </div>
       </div>
