@@ -10,6 +10,8 @@ const StoreStartForm = ({ ShowForm, SetShowForm }) => {
   const [isChecked, setIsChecked] = useState(false);
   const [logoPreview, setLogoPreview] = useState(null);
   const [logoName, setLogoName] = useState(null);
+  const [logoerror, setlogoerror] = useState(false);
+  const [covererror, setcovererror] = useState(false);
   const [coverPreview, setCoverPreview] = useState(null);
   const [coverName, setCoverName] = useState(null);
 
@@ -27,27 +29,37 @@ const StoreStartForm = ({ ShowForm, SetShowForm }) => {
   } = useForm();
 
   const onSubmit = async (data) => {
-    const formData =new FormData();
-    formData.append("Store-name",data.StoreName);
-    formData.append("Store-description",data.StoreDescription);
-    formData.append("Email",data.Email);
-    formData.append("Insta-link",data.InstaLink);
-    formData.append("Facebook-link",data.FacebookLink);
-    formData.append("Tiktok-link",data.TiktokLink);
-    formData.append("Twitter-link",data.TwitterLink);
-    formData.append('logo', data.Logo);
-    formData.append("coverImage",data.CoverImage);
+    if (data.Logo.length <= 0) {
+      setlogoerror(true);
+      return;
+    } else if (data.CoverImage.length <= 0) {
+      setlogoerror(false); //just some hard code
+      setcovererror(true);
+      return;
+    } else {
+      const formData = new FormData();
+      formData.append("Store-name", data.StoreName);
+      formData.append("Store-description", data.StoreDescription);
+      formData.append("Email", data.Email);
+      formData.append("Insta-link", data.InstaLink);
+      formData.append("Facebook-link", data.FacebookLink);
+      formData.append("Tiktok-link", data.TiktokLink);
+      formData.append("Twitter-link", data.TwitterLink);
+      formData.append("logo", data.Logo);
+      formData.append("coverImage", data.CoverImage);
 
-    // try {
-    //   const result = await axios.post("", data);
-    //   if (result) {
-    //     console.log("form submitted!!");
-    //     SetShowForm(false);
-    //   }
-    // } catch (error) {
-    //   console.log("error: form not submited!");
-    // }
-    console.log(data);
+      // try {
+      //   const result = await axios.post("", formData);
+      //   if (result) {
+      //     console.log("form submitted!!");
+      //     SetShowForm(false);
+      //   }
+      // } catch (error) {
+      //   console.log("error: form not submited!");
+      // }
+
+      console.log(data);
+    }
   };
 
   // Disable scrolling when the component is mounted
@@ -113,6 +125,14 @@ const StoreStartForm = ({ ShowForm, SetShowForm }) => {
             {errors.StoreName.message}
           </div>
         )} */}
+
+        {logoerror && (
+          <div className="text-sm text-red-500 ">*Please Upload logo pic</div>
+        )}
+
+        {covererror && (
+          <div className="text-sm text-red-500 ">*Please Upload cover pic</div>
+        )}
 
         {errors.StoreName && (
           <div className="text-sm text-red-500 ">
