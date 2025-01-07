@@ -27,15 +27,27 @@ const StoreStartForm = ({ ShowForm, SetShowForm }) => {
   } = useForm();
 
   const onSubmit = async (data) => {
-    try {
-      const result = await axios.post("", data);
-      if (result) {
-        console.log("form submitted!!");
-        SetShowForm(false);
-      }
-    } catch (error) {
-      console.log("error: form not submited!");
-    }
+    const formData =new FormData();
+    formData.append("Store-name",data.StoreName);
+    formData.append("Store-description",data.StoreDescription);
+    formData.append("Email",data.Email);
+    formData.append("Insta-link",data.InstaLink);
+    formData.append("Facebook-link",data.FacebookLink);
+    formData.append("Tiktok-link",data.TiktokLink);
+    formData.append("Twitter-link",data.TwitterLink);
+    formData.append('logo', data.Logo);
+    formData.append("coverImage",data.CoverImage);
+
+    // try {
+    //   const result = await axios.post("", data);
+    //   if (result) {
+    //     console.log("form submitted!!");
+    //     SetShowForm(false);
+    //   }
+    // } catch (error) {
+    //   console.log("error: form not submited!");
+    // }
+    console.log(data);
   };
 
   // Disable scrolling when the component is mounted
@@ -79,7 +91,7 @@ const StoreStartForm = ({ ShowForm, SetShowForm }) => {
   });
 
   return (
-    <div className="ForBgBlur fixed inset-0 bg-black bg-opacity-5 backdrop-blur-sm z-20 flex flex-col justify-center items-center">
+    <div className="ForBgBlur fixed inset-0 bg-black bg-opacity-5 backdrop-blur-sm z-30 flex flex-col justify-center items-center">
       <div
         className={`w-7/12 bg-white text-black ${styles.ScrollComponent} overflow-auto border flex flex-col items-center gap-6  h-5/6 rounded-lg`}
       >
@@ -270,6 +282,14 @@ const StoreStartForm = ({ ShowForm, SetShowForm }) => {
                   name="Logo"
                   type="file"
                   className="hidden"
+                  onChange={(e) => {
+                    const file = e.target.files[0];
+                    if (file) {
+                      setLogoPreview(URL.createObjectURL(file));
+                      setLogoName(file.name);
+                      setValue("Logo", file);
+                    }
+                  }}
                 />
               </label>
               <div className="ml-2 logopreview h-6 mt-3 w-60">
@@ -330,6 +350,14 @@ const StoreStartForm = ({ ShowForm, SetShowForm }) => {
                   name="CoverImage"
                   type="file"
                   className="hidden"
+                  onChange={(e) => {
+                    const file = e.target.files[0];
+                    if (file) {
+                      setCoverPreview(URL.createObjectURL(file));
+                      setCoverName(file.name);
+                      setValue("CoverImage", file);
+                    }
+                  }}
                 />
               </label>
 

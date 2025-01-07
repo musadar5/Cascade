@@ -10,7 +10,7 @@ import StoreStartForm from "@/app/components/StoreStartForm";
 const page = () => {
   const { data: session, status } = useSession();
   const router = useRouter();
-  const [ShowForm, SetShowForm] = useState(false);
+  const [ShowForm, SetShowForm] = useState(true);
 
   useEffect(() => {
     if (status === "loading") return;
