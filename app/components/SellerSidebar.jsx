@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import styles from "./SellerSidebar.module.css";
 import Link from "next/link";
 
-const SellerSidebar = ({showSidebar}) => {
+const SellerSidebar = ({ showSidebar }) => {
   const [isAbsolute, setIsAbsolute] = useState(false);
   const [StoreSettingShow, SetStoreSettingShow] = useState(false);
   const [ManageProductsShow, SetManageProductsShow] = useState(false);
@@ -35,7 +35,9 @@ const SellerSidebar = ({showSidebar}) => {
   }, []);
   return (
     <div
-      className={`${!showSidebar && "hidden"} z-20 transition-all duration-300 ease-in-out fixed pt-5 pb-6 overflow-y-auto text-sm overflow-x- w-64 flex border-r border-gray-800 flex-col ${
+      className={`${
+        !showSidebar && "hidden"
+      } z-20 transition-all duration-300 ease-in-out fixed pt-5 pb-6 overflow-y-auto text-sm overflow-x- w-64 flex border-r border-gray-800 flex-col ${
         isAbsolute ? "absolute" : "fixed"
       } bg-black text-white ${styles.ScrollComponent} `}
       style={{
@@ -47,7 +49,9 @@ const SellerSidebar = ({showSidebar}) => {
       }}
     >
       <div className=" flex-none w-full h-12 flex  items-center px-5  ">
-        <Link className="hover:text-white" href={"/Seller/dashboard"}>Dashboard</Link>
+        <Link className="hover:text-white" href={"/Seller/dashboard"}>
+          Dashboard
+        </Link>
       </div>
 
       <button
@@ -68,7 +72,10 @@ const SellerSidebar = ({showSidebar}) => {
       </button>
       {StoreSettingShow && (
         <div className="flex-none  w-full flex flex-col border-l border-gray-800 items-start justify-center ml-5 px-5 pt-4">
-          <Link className="h-10 hover:text-white" href={""}>
+          <Link
+            className="h-10 hover:text-white"
+            href={"/Seller/store-appearance"}
+          >
             Store Appearance
           </Link>
           <Link className="h-10 hover:text-white" href={""}>
@@ -143,31 +150,45 @@ const SellerSidebar = ({showSidebar}) => {
       )}
 
       <div className="flex-none  w-full h-12 flex items-center px-5">
-      <Link className="hover:text-white" href={""}>Customer</Link>
+        <Link className="hover:text-white" href={""}>
+          Customer
+        </Link>
       </div>
 
       <div className="flex-none  w-full h-12 flex items-center px-5">
-      <Link className="hover:text-white" href={""}>Inventory</Link>
+        <Link className="hover:text-white" href={""}>
+          Inventory
+        </Link>
       </div>
 
       <div className="flex-none  w-full h-12 flex items-center px-5">
-      <Link className="hover:text-white" href={""}>Analytics</Link>
+        <Link className="hover:text-white" href={""}>
+          Analytics
+        </Link>
       </div>
 
       <div className="flex-none  w-full h-12 flex items-center px-5">
-      <Link className="hover:text-white" href={""}>Promotions</Link>
+        <Link className="hover:text-white" href={""}>
+          Promotions
+        </Link>
       </div>
 
       <div className="flex-none  w-full h-12 flex items-center px-5">
-      <Link className="hover:text-white" href={""}>Payment & Shipping</Link>
+        <Link className="hover:text-white" href={""}>
+          Payment & Shipping
+        </Link>
       </div>
-      
+
       <div className="flex-none  w-full h-12 flex items-center px-5">
-      <Link className="hover:text-white" href={""}>View Your Store</Link>
+        <Link className="hover:text-white" href={""}>
+          View Your Store
+        </Link>
       </div>
 
       <div className="flex-none w-full h-12 flex items-center text-sm text-blue-300 mt-7 px-5">
-      <Link className="hover:text-blue-400 " href={""}>Having trouble?</Link>
+        <Link className="hover:text-blue-400 " href={""}>
+          Having trouble?
+        </Link>
       </div>
     </div>
   );

@@ -27,50 +27,48 @@ const handler = NextAuth({
                 // Add logic here to look up the user from the credentials supplied
                 try {
                     await connectToDatabase();
-                    
-                    if(credentials.userType==="seller")
-                    {
+
+                    if (credentials.userType === "seller") {
                         const exists = await seller.findOne({ username: credentials.username })
                         if (exists) {
-                            if (await bcrypt.compare(credentials.password, exists.password)) {  
+                            if (await bcrypt.compare(credentials.password, exists.password)) {
                                 return exists;
                             }
                             else {
                                 throw new Error("Password Incorrect");
                             }
-    
+
                         }
                         else {
                             throw new Error("User does not Exist! Please Signup!");
-                        } 
+                        }
                     }
-                    else if(credentials.userType==="customer")
-                    {
-                        const exists = await customer.findOne({ username: credentials.username , storeId: credentials.storeid })
+                    else if (credentials.userType === "customer") {
+                        const exists = await customer.findOne({ username: credentials.username, storeId: credentials.storeid })
                         if (exists) {
-                            if (await bcrypt.compare(credentials.password, exists.password)) {  
+                            if (await bcrypt.compare(credentials.password, exists.password)) {
                                 return exists;
                             }
                             else {
                                 throw new Error("Password Incorrect");
                             }
-    
+
                         }
                         else {
                             throw new Error("User does not Exist! Please Signup!");
-                        } 
+                        }
                     }
-                    
-                    
+
+
 
                 }
                 catch (error) {
                     if (error.message === "Password Incorrect" || error.message === "User does not Exist! Please Signup!") {
                         throw new Error(error.message);
-                      } else {
+                    } else {
                         throw new Error("An unexpected error occurred. Please try again.");
-                      }
-                  }
+                    }
+                }
 
 
             }
@@ -78,11 +76,12 @@ const handler = NextAuth({
         )
 
     ],
-    
+
     callbacks: {
         async jwt({ token, user }) {
             if (user) {
-                token.name = user.fullName; 
+                console.log(user);
+                token.name = user.fullName;
                 token.username = user.username;
                 token.role = user.role;
                 token.storeid = user.storeId;
@@ -96,10 +95,10 @@ const handler = NextAuth({
             session.user.storeid = token.storeid;
             return session;
         },
-        
-    
 
-}
+
+
+    }
 })
 
 export { handler as GET, handler as POST };

@@ -10,9 +10,10 @@ import StoreStartForm from "@/app/components/StoreStartForm";
 const page = () => {
   const { data: session, status } = useSession();
   const router = useRouter();
-  const [ShowForm, SetShowForm] = useState(true);
+  const [ShowForm, SetShowForm] = useState(false);
 
   useEffect(() => {
+    console.log("session is :", session);
     if (status === "loading") return;
 
     if (
@@ -23,18 +24,13 @@ const page = () => {
     }
   }, [status, session, router]);
 
-  // useEffect(() => {
-  //   const checkstoreexists = async () => {
-  //     // const storeexists = await axios.get();
-  //     const storeexists = false;
-  //     if (!storeexists) { 
-  //       SetShowForm(true);
-  //     } else {
-  //       SetShowForm(false);
-  //     }
-  //   };
-  //   checkstoreexists();
-  // }, []);
+  useEffect(() => {
+    if (status === "loading") return;
+
+    if (session && session.user && session.user.storeid === "0") {
+      SetShowForm(true);
+    }
+  }, [status, session]);
 
   if (status === "loading") {
     return <Loader />;

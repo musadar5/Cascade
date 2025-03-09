@@ -12,7 +12,7 @@ export async function POST(request) {
         if (exists) {
             return NextResponse.json({ message: "Email already in use! Try another Email" });
         }
-        exists=null;
+        exists = null;
         exists = await seller.findOne({ username: data.username });
         if (exists) {
             return NextResponse.json({ message: "User already exists! Login to your account" });
@@ -29,6 +29,7 @@ export async function POST(request) {
                 username: data.username,
                 fullName: data.name,
                 role: "seller"
+
             });
             await newseller.save();
             return NextResponse.json({ message: "Account created successfully!" });
